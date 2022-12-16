@@ -22,5 +22,13 @@ pipeline{
         }
 
         // Add the "Deploy" stage here
+        stage('Deploy') {
+            steps {
+		sh '''
+		    oc project eddvqe-greetings
+                    oc start-build greeting-service --follow --wait
+                '''
+            }
+       }
     }
 }
